@@ -1,0 +1,15 @@
+--- haserl-0.9.27/configure.ac~	2010-10-18 01:13:04.000000000 +0200
++++ haserl-0.9.27/configure.ac	2010-10-19 17:34:10.000000000 +0200
+@@ -51,7 +51,11 @@
+ 	if pkg-config --exists lua5.1; then
+ 		LUALIB=lua5.1
+ 	else
+-		LUALIB=lua
++		if pkg-config --exists lua51; then
++			LUALIB=lua51
++		else 
++			LUALIB=lua
++		fi
+ 	fi
+ 	if test -z "$LUA_HDR_DIR"; then
+ 		CFLAGS="$CFLAGS `pkg-config $LUALIB --cflags`"
